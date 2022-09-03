@@ -13,8 +13,13 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
+        $title = $this->faker->sentence(2);
+        $type = ['best', 'top', 'random', 'featured'];
+
         return [
-            //
+            'title' => rtrim($title, '.'),
+            'price' => $this->faker->numberBetween(100, 1000),
+            'type' => $type[array_rand($type)]
         ];
     }
 }
