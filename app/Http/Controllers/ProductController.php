@@ -29,7 +29,8 @@ class ProductController extends Controller
     public function ajaxLoad(Request $request)
     {
         $products = $this->productRepository->getProductsByType($request);
-        return $this->successResponse(['hi']);
+        $html = view('sub.product-render', compact('products'))->render();
+        return $this->successResponse(['html' => $html]);
     }
 
 
